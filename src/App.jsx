@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const socials = [
   ['LinkedIn', 'https://www.linkedin.com/in/harsh-bhardwaj-9ba233232/'],
@@ -36,7 +36,20 @@ function useReveal() {
 
 function Counter({ value, suffix = '' }) {
   const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const counterRef = useRef(null);
   useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setStarted(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    if (counterRef.current) observer.observe(counterRef.current);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!started) return undefined;
     let frame;
     const start = performance.now();
     const tick = (now) => {
@@ -46,8 +59,8 @@ function Counter({ value, suffix = '' }) {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [value]);
-  return <>{count.toLocaleString()}<span>{suffix}</span></>;
+  }, [started, value]);
+  return <span ref={counterRef}>{count.toLocaleString()}<span>{suffix}</span></span>;
 }
 
 function App() {
