@@ -3,5 +3,4 @@ dist/
 .venv/
 __pycache__/
 *.pyc
-package-lock.json
 .DS_Store
