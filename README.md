@@ -1,13 +1,20 @@
 # Harsh Bhardwaj Portfolio
 
-A responsive, animated portfolio for Harsh Bhardwaj, backend engineer.
+A responsive React portfolio for Harsh Bhardwaj, backend engineer.
 
 ## Run locally
 
 ```bash
-npx http-server . -p 4173
+npm install
+npm run dev
 ```
 
-Then open `http://127.0.0.1:4173`.
+Then open the Vite URL shown in the terminal.
 
-The site is a static HTML/CSS/JavaScript portfolio. The supplied resume is available as `Harsh_Bhardwaj_cv.pdf` through the Download CV link.
+## Build
+
+```bash
+npm run build
+```
+
+The app uses React, Vite, CSS animations, IntersectionObserver reveals, animated metric counters, and GitHub Pages deployment through `.github/workflows/deploy.yml`. The supplied resume is available as `Harsh_Bhardwaj_cv.pdf` through the Download CV link.
