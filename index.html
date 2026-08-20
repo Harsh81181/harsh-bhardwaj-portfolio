@@ -9,6 +9,12 @@
       html { overflow-x: hidden; }
       body { overflow-x: hidden; touch-action: pan-y; overscroll-behavior-y: auto; }
       #root, main { min-height: 100%; overflow-x: clip; }
+      .header-identity { display: flex; align-items: center; gap: 22px; }
+      .header-socials { display: flex; align-items: center; gap: 7px; }
+      .header-socials a { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); transition: color .25s, border-color .25s, background .25s, transform .25s; }
+      .header-socials a:hover { color: var(--ink); background: var(--lime); border-color: var(--lime); transform: translateY(-3px); }
+      .header-socials span { font: 700 8px var(--mono); }
+      @media (max-width: 760px) { .header-identity { gap: 10px; } .header-socials { gap: 4px; } .header-socials a { width: 24px; height: 24px; } .header-socials span { font-size: 7px; } }
     </style>
     <style>html,body,main{overflow-x:hidden!important}</style>
   </head>
